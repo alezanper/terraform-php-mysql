@@ -20,10 +20,3 @@ ALTER TABLE `users`
 ALTER TABLE `users`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 COMMIT;
-
-
-GRANT ALL PRIVILEGES ON * . * TO 'newuser'@'mysql-terraform-php';FLUSH PRIVILEGES;
-
-DELETE FROM mysql.user WHERE User='';
-
-
