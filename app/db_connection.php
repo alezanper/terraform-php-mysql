@@ -1,6 +1,6 @@
 <?php
 $servername = "mysql-terraform-php.mysql.database.azure.com";
-$username = "newuser";
+$username = "newuser@mysql-terraform-php";
 $password = "passwordComplex2019*";
 $db_name = "crud_app";
 
