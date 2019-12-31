@@ -21,7 +21,7 @@ resource "azurerm_app_service" "test" {
   app_service_plan_id = "${azurerm_app_service_plan.test.id}"
 
   site_config {
-    linux_fx_version = "PHP|7.0"
+    linux_fx_version = "PHP|7.3"
     scm_type         = "LocalGit"
   }
 
