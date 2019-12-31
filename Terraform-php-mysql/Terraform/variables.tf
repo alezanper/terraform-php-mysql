@@ -1,14 +1,14 @@
 variable "resource-group-name" {
-  default = "terraform-resource-group"
+  default = "terraform-rg"
   description = "The prefix used for all resources in this example"
 }
 
 variable "app-service-name" {
-  default = "terraform-app-alezanper12"
+  default = "terraform-app-phpmysql"
   description = "The name of the Web App"
 }
 
 variable "location" {
-  default = "West Europe"
+  default = "South Central US"
   description = "The Azure location where all resources in this example should be created"
 }
