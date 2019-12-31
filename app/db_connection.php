@@ -1,7 +1,7 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
+$servername = "mysql-terraform-php.mysql.database.azure.com";
+$username = "newuser";
+$password = "passwordComplex2019*";
 $db_name = "crud_app";
 
 // Create connection
