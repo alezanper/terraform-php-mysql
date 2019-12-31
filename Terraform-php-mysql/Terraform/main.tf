@@ -12,16 +12,7 @@ resource "azurerm_resource_group" "test" {
   location = "${var.location}"
 }
 
-resource "azurerm_app_service_plan" "test" {
-  name                = "terraform-appplan"
-  location            = "${azurerm_resource_group.test.location}"
-  resource_group_name = "${azurerm_resource_group.test.name}"
 
-  sku {
-    tier = "Standard"
-    size = "S1"
-  }
-}
 
 resource "azurerm_app_service" "test" {
   name                = "${var.app-service-name}"
@@ -30,18 +21,32 @@ resource "azurerm_app_service" "test" {
   app_service_plan_id = "${azurerm_app_service_plan.test.id}"
 
   site_config {
-    linux_fx_version = "PHP|7.3"
+    linux_fx_version = "PHP|7.0"
     scm_type         = "LocalGit"
   }
-
-  app_settings = {
-    "SOME_KEY" = "some-value"
-  }
-
 }
 
+resource "azurerm_app_service_plan" "test" {
+  name                = "terraform-appplan"
+  location            = "${azurerm_resource_group.test.location}"
+  resource_group_name = "${azurerm_resource_group.test.name}"
+  kind                = "Linux"
+  reserved            = true
+
+  sku {
+    tier = "Standard"
+    size = "S1"
+  }
+}
+
+
+
+
+
+
+
 resource "azurerm_mysql_server" "test" {
-  name                = "mysql-server-1"
+  name                = "mysql-terraform-php"
   location            = "${azurerm_resource_group.test.location}"
   resource_group_name = "${azurerm_resource_group.test.name}"
 
