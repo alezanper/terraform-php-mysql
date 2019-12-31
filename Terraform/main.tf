@@ -47,9 +47,10 @@ resource "azurerm_app_service_plan" "test" {
 
 
 resource "azurerm_mysql_server" "test" {
-  name                = "mysql-terraform-php"
-  location            = "${azurerm_resource_group.test.location}"
-  resource_group_name = "${azurerm_resource_group.test.name}"
+  name                        = "mysql-terraform-php"
+  fully_qualified_domain_name = "mysql-terraform-php.mysql.database.azure.com"
+  location                    = "${azurerm_resource_group.test.location}"
+  resource_group_name         = "${azurerm_resource_group.test.name}"
 
   sku {
     name     = "B_Gen5_2"
