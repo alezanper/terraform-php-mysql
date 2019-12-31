@@ -66,7 +66,7 @@ resource "azurerm_mysql_server" "test" {
   administrator_login          = "newuser"
   administrator_login_password = "passwordComplex2019*"
   version                      = "5.7"
-  ssl_enforcement              = "Desabled"
+  ssl_enforcement              = "Disabled"
 }
 
 resource "azurerm_mysql_firewall_rule" "test" {
