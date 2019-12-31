@@ -24,6 +24,12 @@ resource "azurerm_app_service" "test" {
     linux_fx_version = "PHP|7.0"
     scm_type         = "LocalGit"
   }
+
+  connection_string {
+    name  = "Database"
+    type  = "SQLServer"
+    value = "Server=tcp:${azurerm_sql_server.test.fully_qualified_domain_name} Database=${azurerm_mysql_server.test.name};User ID=${azurerm_mysql_server.test.administrator_login};Password=${azurerm_sql_server.test.administrator_login_password};Trusted_Connection=False;Encrypt=True;"
+  }
 }
 
 resource "azurerm_app_service_plan" "test" {
