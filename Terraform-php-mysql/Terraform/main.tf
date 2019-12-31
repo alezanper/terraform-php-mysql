@@ -1,7 +1,7 @@
 terraform {
   required_version = ">= 0.11"
   backend "azurerm" {
-    storage_account_name = "storage_account_tf"
+    storage_account_name = "storageaccounttf"
     container_name        = "container_tf"
     key                   = "terraform.tfstate"
   }
