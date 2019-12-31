@@ -21,11 +21,9 @@ ALTER TABLE `users`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 COMMIT;
 
-CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';FLUSH PRIVILEGES;
 
-GRANT ALL PRIVILEGES ON * . * TO 'newuser'@'localhost';FLUSH PRIVILEGES;
+GRANT ALL PRIVILEGES ON * . * TO 'newuser'@'mysql-terraform-php';FLUSH PRIVILEGES;
 
 DELETE FROM mysql.user WHERE User='';
 
-DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');
 
