@@ -28,7 +28,7 @@ resource "azurerm_app_service" "test" {
   connection_string {
     name  = "Database"
     type  = "SQLServer"
-    value = "Server=tcp:${azurerm_mysql_server.test.fully_qualified_domain_name} Database=${azurerm_mysql_server.test.name};User ID=${azurerm_mysql_server.test.administrator_login};Password=${azurerm_mysql_server.test.administrator_login_password};Trusted_Connection=False;Encrypt=True;"
+    value = "Server=tcp:${azurerm_sql_server.test.fully_qualified_domain_name} Database=${azurerm_sql_server.test.name};User ID=${azurerm_sql_server.test.administrator_login};Password=${azurerm_sql_server.test.administrator_login_password};Trusted_Connection=False;Encrypt=True;"
   }
 }
 
@@ -46,9 +46,8 @@ resource "azurerm_app_service_plan" "test" {
 }
 
 
-resource "azurerm_mysql_server" "test" {
+resource "azurerm_sql_server" "test" {
   name                        = "mysql-terraform-php"
-  fully_qualified_domain_name = "mysql-terraform-php.mysql.database.azure.com"
   location                    = "${azurerm_resource_group.test.location}"
   resource_group_name         = "${azurerm_resource_group.test.name}"
 
@@ -71,10 +70,10 @@ resource "azurerm_mysql_server" "test" {
   ssl_enforcement              = "Enabled"
 }
 
-resource "azurerm_mysql_firewall_rule" "test" {
+resource "azurerm_sql_firewall_rule" "test" {
   name                = "firewall-mysql"
   resource_group_name = "${azurerm_resource_group.test.name}"
-  server_name         = "${azurerm_mysql_server.test.name}"
+  server_name         = "${azurerm_sql_server.test.name}"
   start_ip_address    = "0.0.0.0"
   end_ip_address      = "0.0.0.0"
 }
