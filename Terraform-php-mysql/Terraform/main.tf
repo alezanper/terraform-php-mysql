@@ -63,3 +63,11 @@ resource "azurerm_mysql_server" "test" {
   version                      = "5.7"
   ssl_enforcement              = "Enabled"
 }
+
+resource "azurerm_mysql_firewall_rule" "test" {
+  name                = "firewall-mysql"
+  resource_group_name = "${azurerm_resource_group.test.name}"
+  server_name         = "${azurerm_mysql_server.test.name}"
+  start_ip_address    = "0.0.0.0"
+  end_ip_address      = "0.0.0.0"
+}
