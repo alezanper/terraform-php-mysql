@@ -16,7 +16,6 @@ resource "azurerm_app_service_plan" "test" {
   name                = "terraform-appplan"
   location            = "${azurerm_resource_group.test.location}"
   resource_group_name = "${azurerm_resource_group.test.name}"
-  kind                = "Linux"
 
   sku {
     tier = "Standard"
@@ -39,29 +38,28 @@ resource "azurerm_app_service" "test" {
     "SOME_KEY" = "some-value"
   }
 
-  connection_string {
-    name  = "Database"
-    type  = "SQLServer"
-    value = "Server=tcp:${azurerm_sql_server.test.fully_qualified_domain_name} Database=${azurerm_sql_database.test.name};User ID=${azurerm_sql_server.test.administrator_login};Password=${azurerm_sql_server.test.administrator_login_password};Trusted_Connection=False;Encrypt=True;"
-  }
 }
 
-resource "azurerm_sql_server" "test" {
-  name                         = "terraform-sqlserver"
-  resource_group_name          = "${azurerm_resource_group.test.name}"
-  location                     = "${azurerm_resource_group.test.location}"
-  version                      = "12.0"
+resource "azurerm_mysql_server" "test" {
+  name                = "mysql-server-1"
+  location            = "${azurerm_resource_group.test.location}"
+  resource_group_name = "${azurerm_resource_group.test.name}"
+
+  sku {
+    name     = "B_Gen5_2"
+    capacity = 2
+    tier     = "Basic"
+    family   = "Gen5"
+  }
+
+  storage_profile {
+    storage_mb            = 5120
+    backup_retention_days = 7
+    geo_redundant_backup  = "Disabled"
+  }
+
   administrator_login          = "newuser"
   administrator_login_password = "passwordComplex2019*"
-}
-
-resource "azurerm_sql_database" "test" {
-  name                = "terraform-sqldatabase"
-  resource_group_name = "${azurerm_resource_group.test.name}"
-  location            = "${azurerm_resource_group.test.location}"
-  server_name         = "${azurerm_sql_server.test.name}"
-
-  tags = {
-    environment = "production"
-  }
+  version                      = "5.7"
+  ssl_enforcement              = "Enabled"
 }
