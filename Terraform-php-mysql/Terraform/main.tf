@@ -40,11 +40,6 @@ resource "azurerm_app_service_plan" "test" {
 }
 
 
-
-
-
-
-
 resource "azurerm_mysql_server" "test" {
   name                = "mysql-terraform-php"
   location            = "${azurerm_resource_group.test.location}"
@@ -67,4 +62,6 @@ resource "azurerm_mysql_server" "test" {
   administrator_login_password = "passwordComplex2019*"
   version                      = "5.7"
   ssl_enforcement              = "Enabled"
+  start_ip_address             = "0.0.0.0"
+  end_ip_address               = "0.0.0.0"
 }
