@@ -43,7 +43,7 @@ function get_all_data($conn){
       
        <!-- INSERT DATA -->
         <div class="form">
-            <h2>Insert Data</h2>
+            <h2>Insert Data </h2>
             <form action="insert.php" method="post">
                 <strong>Username</strong><br>
                 <input type="text" name="username" placeholder="Enter your full name" required><br>
