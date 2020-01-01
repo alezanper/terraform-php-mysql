@@ -63,5 +63,4 @@ function get_all_data($conn){
         <!-- END OF SHOW DATA SECTION -->
     </div>
 </body>
-
 </html>
