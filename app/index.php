@@ -45,9 +45,9 @@ function get_all_data($conn){
         <div class="form">
             <h2>Insert Data</h2>
             <form action="insert.php" method="post">
-                <strong>Username:</strong><br>
+                <strong>Username</strong><br>
                 <input type="text" name="username" placeholder="Enter your full name" required><br>
-                <strong>Email:</strong><br>
+                <strong>Email</strong><br>
                 <input type="email" name="email" placeholder="Enter your email" required><br>
                 <input type="submit" value="Insert">
             </form>
