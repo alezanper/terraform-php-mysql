@@ -39,8 +39,7 @@ function get_all_data($conn){
 </head>
 
 <body>
-    <div class="container">
-      
+    <div class="container">    
        <!-- INSERT DATA -->
         <div class="form">
             <h2>Insert Data </h2>
