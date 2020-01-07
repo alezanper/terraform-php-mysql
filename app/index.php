@@ -38,6 +38,7 @@ function get_all_data($conn){
     <link rel="stylesheet" href="style.css">
 </head>
 
+
 <body>
     <div class="container">    
        <!-- INSERT DATA -->
